@@ -1,7 +1,8 @@
 ---
 paths:
-  - "src/components/**"
-  - "src/styles/**"
+  - "**/components/**"
+  - "**/styles/**"
+  - "**/lib/components/**"
 description: Rules for Phase 4 — responsive migration from desktop to tablet and mobile
 ---
 

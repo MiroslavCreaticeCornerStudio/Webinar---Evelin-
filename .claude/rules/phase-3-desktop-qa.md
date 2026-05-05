@@ -1,8 +1,11 @@
 ---
 paths:
-  - "src/components/**"
-  - "src/pages/**"
-  - "src/layouts/**"
+  - "**/components/**"
+  - "**/pages/**"
+  - "**/routes/**"
+  - "**/app/**"
+  - "**/layouts/**"
+  - "**/lib/components/**"
 description: Rules for Phase 3 — desktop QA checklist and auto-correction loop
 ---
 
@@ -21,7 +24,7 @@ For each section verify:
 ## Image Check
 
 For each image in the section:
-- The downloaded image file exists in `public/assets/images/`
+- The downloaded image file exists in your static asset folder (`public/assets/images/` for Next.js/Astro/Vite, `static/assets/images/` for SvelteKit)
 - The `src` attribute points to the correct file
 - **File extension matches actual content type** — run `file <path>` to verify. SVGs saved as `.jpg`/`.png` will show as broken images in the browser. If mismatched, rename the file and update the `src` attribute.
 - **File size is reasonable** — raster images (JPG/PNG) for content areas should be >5KB. Files under 1KB are likely SVG placeholders or failed exports from Figma. Flag these and notify the user.
@@ -63,7 +66,7 @@ For each section:
 - **`--size-container-max` must be `1440px`** on desktop — not 1920px. Flag if larger.
 - **`--container-padding` must reduce on mobile** — verify media query overrides exist (≤991px: `1.5em`, ≤767px: `1em`)
 - No unused CSS
-- Component props properly typed
+- Component props properly typed (TS interfaces, `defineProps<T>()`, etc. — per your framework)
 - No inline styles unless absolutely necessary
 
 ## Responsive Check

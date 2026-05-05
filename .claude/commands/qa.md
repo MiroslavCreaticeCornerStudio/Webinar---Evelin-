@@ -14,4 +14,4 @@ For each section:
 4. Check code quality: semantic HTML, no hardcoded values, proper types, no unused CSS
 5. If any issues found: fix them, then re-check until the section passes
 
-After desktop QA passes, verify the build still compiles: `npm run build`
+After desktop QA passes, verify the build still compiles with your framework's build command (e.g., `npm run build`).

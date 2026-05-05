@@ -1,28 +1,60 @@
-# build output
-dist/
-# generated types
-.astro/
+# OS
+.DS_Store
+Thumbs.db
 
-# dependencies
-node_modules/
+# Editors / IDEs
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
 
-# logs
+# Logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Dependencies
+node_modules/
 
-# environment variables
+# Environment variables
 .env
-.env.production
+.env.local
+.env.*.local
 
-# macOS-specific files
-.DS_Store
-
-# jetbrains setting folder
-.idea/
-
-# Claude Code personal overrides
-CLAUDE.local.md
+# Claude Code — personal/local overrides only (team-shared settings.json is committed)
 .claude/settings.local.json
+
+# Build outputs (any framework)
+dist/
+build/
+out/
+.output/
+.vercel/
+.netlify/
+.cloudflare/
+.wrangler/
+
+# Astro
+.astro/
+
+# Next.js
+.next/
+next-env.d.ts
+
+# SvelteKit
+.svelte-kit/
+
+# Nuxt
+.nuxt/
+
+# Vite
+*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Starter setup — backup folder created if scaffolder needs to move conflicting files
+_starter-backup/

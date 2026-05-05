@@ -27,6 +27,12 @@ Produce `SITE_MAP.md` documenting:
 
 The `get_design_context` tool returns asset URLs for all images in the design. These URLs are temporary (expire in 7 days).
 
+The static asset folder depends on your framework:
+- Next.js / Astro / Vite: `public/assets/images/`
+- SvelteKit: `static/assets/images/`
+
+The example below uses `public/assets/images/` — adjust for your stack.
+
 **For every image returned:**
 
 1. **Download ALL images using a Node.js script** — do NOT use `curl` or `wget` as these may be blocked by shell permissions. Use the following pattern to batch-download all images in a single `node -e` command:
@@ -62,7 +68,7 @@ The `get_design_context` tool returns asset URLs for all images in the design. T
    ```
 2. **Verify the actual file type** after downloading — run `file <path>` to check. Figma exports may return PNGs even when saved as `.jpg`. Always rename to match the actual content type (e.g., if `file` reports PNG but extension is `.jpg`, rename to `.png`).
 3. **Verify the file size is reasonable** — raster images (JPG/PNG) for content areas should generally be >5KB. Files under 1KB are likely SVG placeholders or failed downloads. If a "photo" image is tiny (<5KB), the Figma export returned a vector placeholder instead of the rasterized image — flag this in IMAGE_MANIFEST.md and notify the user.
-4. Save to `public/assets/images/` with a descriptive filename derived from the Figma layer name (e.g., `hero-background.png`, `team-james-vile.png`, `icon-chair.svg`)
+4. Save to your static asset folder with a descriptive filename derived from the Figma layer name (e.g., `hero-background.png`, `team-james-vile.png`, `icon-chair.svg`)
 5. Record in `IMAGE_MANIFEST.md` with: filename, dimensions, actual file type, file size, description, download status
 
 **If a download fails:**
@@ -110,9 +116,9 @@ Node ID: `<pageNodeId>`
 
 | Section | Node ID | Component | Background | Notes |
 |---------|---------|-----------|------------|-------|
-| Navbar  | `<id>`  | Navbar.astro | transparent | Shared |
-| Hero    | `<id>`  | Hero.astro   | dark        | Full-width bg image |
-| ...     | ...     | ...          | ...         | ... |
+| Navbar  | `<id>`  | Navbar    | transparent | Shared |
+| Hero    | `<id>`  | Hero      | dark        | Full-width bg image |
+| ...     | ...     | ...       | ...         | ... |
 
 ## Shared Components
 | Component | Node ID | Description |
@@ -120,5 +126,7 @@ Node ID: `<pageNodeId>`
 | Button    | `<id>`  | Primary/secondary variants |
 | ...       | ...     | ... |
 ```
+
+The "Component" column lists the component name only — append your framework's file extension when you create the file (`.tsx` for Next.js/React, `.astro` for Astro, `.vue` for Vue, `.svelte` for SvelteKit).
 
 Every section entry MUST have a `nodeId`. Phase 2 depends on these references to call `get_design_context` and `get_screenshot` per section.

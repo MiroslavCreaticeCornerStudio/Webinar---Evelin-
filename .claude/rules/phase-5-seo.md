@@ -1,8 +1,11 @@
 ---
 paths:
-  - "src/pages/**"
-  - "src/layouts/**"
-  - "src/components/**"
+  - "**/pages/**"
+  - "**/routes/**"
+  - "**/app/**"
+  - "**/layouts/**"
+  - "**/components/**"
+  - "**/lib/components/**"
 description: Rules for Phase 5 — SEO, accessibility, and HTML quality
 ---
 

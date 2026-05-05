@@ -29,7 +29,7 @@ Parse the first Figma page and derive:
 
 ## Breakpoints
 
-The fluid scaling system uses these breakpoints (aligned with the scaling system in global.css):
+The fluid scaling system uses these breakpoints (aligned with the scaling system in `global.css`):
 - Desktop: 992px+ (ideal: Figma frame width, max: 1440px)
 - Tablet: 768px–991px (ideal: 834)
 - Mobile Landscape: 480px–767px (ideal: 550)
@@ -53,7 +53,7 @@ Example conversions: 4px → 0.25em, 12px → 0.75em, 24px → 1.5em, 48px → 3
 
 Save the extracted brief to `PROJECT_BRIEF.md` at the project root with all findings organized clearly.
 
-After saving, immediately update `src/styles/global.css`:
+After saving, immediately update your global stylesheet (`global.css` from this starter — relocate to your framework's standard location: `app/globals.css` for Next.js, `src/app.css` for SvelteKit, `src/styles/global.css` for Astro/Vite):
 - Set `--size-container-ideal` to the Figma frame width (e.g., 1280 for a 1280px design — no px unit)
 - Set `--size-container-max` to `1440px` on desktop — this caps the font scaling so text doesn't get too large on wide screens
 - Update design tokens: colors, typography, spacing, shadows, border radius values (all in em)

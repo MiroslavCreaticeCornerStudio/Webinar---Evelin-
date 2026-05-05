@@ -1,13 +1,18 @@
 ---
 paths:
-  - "src/components/**"
-  - "src/pages/**"
-  - "src/layouts/**"
-  - "src/styles/**"
+  - "**/components/**"
+  - "**/pages/**"
+  - "**/routes/**"
+  - "**/app/**"
+  - "**/layouts/**"
+  - "**/styles/**"
+  - "**/lib/components/**"
 description: Rules for Phase 2 — building the desktop version from Figma designs
 ---
 
 # Phase 2: Desktop Build (Responsive from the Start)
+
+> **Framework note**: This rule is framework-agnostic. Component file extensions, layout file paths, and styling conventions vary by stack — examples below cover Next.js, Astro, Vite/React, SvelteKit, and Vue. Tighten the `paths:` glob above for your specific framework if you want narrower auto-loading.
 
 Build desktop-first but **include responsive styles in every component**. Do not defer responsive to a later phase — each component must work from desktop down to mobile (320px) when it's built.
 
@@ -32,8 +37,8 @@ Every component MUST be built from live Figma data, not from text descriptions o
 
 ## Global Setup
 
-1. Update `src/styles/global.css` with design tokens from the brief and Figma analysis
-2. Update `src/layouts/BaseLayout.astro` with project-specific meta, fonts, and title
+1. Update your global stylesheet (`global.css` from this starter, relocated as needed: `app/globals.css` for Next.js, `src/app.css` for SvelteKit, `src/styles/global.css` for Astro/Vite) with design tokens from the brief and Figma analysis
+2. Update your root layout file (e.g., `app/layout.tsx` for Next.js, `src/routes/+layout.svelte` for SvelteKit, `src/layouts/BaseLayout.astro` for Astro, `src/App.vue` for Vue) with project-specific meta, fonts, and title
 3. Set `--size-container-ideal` to the Figma frame width (e.g., 1440 for a 1440px design — no px unit)
 
 ## Units (CRITICAL) — Fluid Scaling with em
@@ -124,15 +129,15 @@ Build bottom-up to resolve dependencies:
 
 ## Component Rules
 
-- Live in `src/components/` (flat structure unless complexity demands folders)
-- Use scoped `<style>` tags in `.astro` files
-- Receive data via Astro props with TypeScript interfaces
+- Live in your framework's components directory (`src/components/` for Astro/Vite/Vue, `app/components/` or `components/` for Next.js, `src/lib/components/` for SvelteKit)
+- Use your framework's idiomatic styling (scoped `<style>` in `.astro`/`.vue`/`.svelte`, CSS Modules in React, Tailwind, vanilla-extract, etc.) — pick one and stay consistent
+- Receive data via typed component props (TS interfaces in React/Astro, `defineProps<T>()` in Vue/Svelte, etc.)
 - Use semantic HTML (`<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`)
 
 ## Image Handling in Components
 
-- Use the downloaded images from `public/assets/images/`
-- Reference with `/assets/images/{filename}` in `src` attributes
+- Use the downloaded images from your static asset folder
+- Reference with the URL the framework serves them at (`/assets/images/{filename}` for most stacks)
 - Always include `alt`, `width`, `height` attributes
 - If an image was marked as FAILED in `IMAGE_MANIFEST.md`, use the placeholder and add a comment: `<!-- TODO: Replace placeholder - image download failed -->`
 
@@ -164,7 +169,7 @@ The fluid scaling system handles most sizing automatically — font-sizes, paddi
 ## Typography Fidelity (CRITICAL)
 
 - **Use the exact font-weight from Figma** — do NOT assume headings should be bold. Many designs use `font-weight: 400` (Regular) for headings. Check the Figma style: "Regular" = 400, "Medium" = 500, "SemiBold" = 600, "Bold" = 700.
-- The global CSS reset already sets headings to use `var(--font-heading)` and `line-height: 1.2`, but it does NOT set font-weight — the browser default bold must be explicitly overridden when Figma specifies Regular (400).
+- The global CSS reset already sets headings to use `var(--font-heading)` and a base line-height, but it does NOT set font-weight — the browser default bold must be explicitly overridden when Figma specifies Regular (400).
 - When building headings, always set `font-weight` explicitly to match Figma. Never rely on browser defaults.
 
 ## Desktop Fidelity (Source of Truth: Figma MCP)
@@ -177,5 +182,5 @@ All fidelity checks reference data from `get_design_context` and `get_screenshot
 - **Layout**: Column count, flex direction, alignment must match `get_screenshot`
 - **Border radius, shadows, visual treatments**: Match exact values from `get_design_context`
 - **Text content**: Character-for-character match from `get_design_context` — no lorem ipsum, no rewriting
-- **Images**: Use downloaded images from `public/assets/images/`, presented exactly as shown in `get_screenshot`
+- **Images**: Use downloaded images from your static asset folder, presented exactly as shown in `get_screenshot`
 - **No additions**: Do NOT add animations, transitions, hover effects, or decorative elements that don't appear in the Figma design
