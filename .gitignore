@@ -24,6 +24,9 @@ node_modules/
 .env.local
 .env.*.local
 
+# Google Indexing API service account key — never commit this
+.google-indexing-key.json
+
 # Claude Code — personal/local overrides only (team-shared settings.json is committed)
 .claude/settings.local.json
 

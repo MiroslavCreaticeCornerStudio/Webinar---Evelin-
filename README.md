@@ -1,138 +1,164 @@
-# Claude Starter — Figma to Live Website
+# Claude Starter — Figma to Live Website + SEO & AEO
 
-Turn a Figma design into a real, production-ready website using Claude Code. You bring the Figma file; Claude builds the site.
-
-This starter works with any modern frontend (Astro, Next.js, Vite/React, SvelteKit, Vue) — Claude will ask which one you want before building.
+Turn a Figma design into a real, production-ready website using Claude Code — then rank higher in Google and get cited in ChatGPT, Perplexity, and AI Overviews. Claude does the work. You make the decisions.
 
 ---
 
 ## Who this is for
 
-Anyone with a Figma design who wants a real website. You don't need to know how to code. You do need to be comfortable copying a few terminal commands once during setup.
+Anyone with a Figma design who wants a real website with strong search visibility. You don't need to know how to code. You do need to be comfortable copying a few terminal commands once during setup.
 
 ---
 
 ## Prerequisites (one-time setup)
 
-You need these installed before starting. Each is a one-time install.
-
-1. **Node.js** (v20 or newer) — runs the framework. [Download from nodejs.org](https://nodejs.org).
-2. **Claude Code** — the AI that does the building. [Install instructions](https://claude.ai/code).
-3. **Figma MCP** — lets Claude read your Figma file directly. After installing Claude Code, run `/mcp` and follow the prompt to add the Figma MCP server. You'll need to authorize it with your Figma account.
-4. **A Figma file** — your design, finished and shared with at least "view" access.
+1. **Node.js** (v20 or newer) — [nodejs.org](https://nodejs.org)
+2. **Claude Code** — [claude.ai/code](https://claude.ai/code)
+3. **Figma MCP** — after installing Claude Code, run `/mcp` and add the Figma MCP server. Authorize it with your Figma account.
+4. **A Figma file** — your design, shared with at least "view" access.
+5. **Google Search Console** — free at [search.google.com/search-console](https://search.google.com/search-console)
+6. **Google Analytics 4** — free at [analytics.google.com](https://analytics.google.com)
 
 ---
 
-## Quickstart (3 steps)
+## Part 1 — Build the site from Figma
 
-1. **Open this folder in Claude Code.** Either clone this repo or download the ZIP and unzip it. Then in Claude Code, point it at the folder.
+### Quickstart (3 steps)
+
+1. **Open this folder in Claude Code.** Clone or download the repo and point Claude Code at the folder.
 
 2. **Run the build command** with your Figma URL:
    ```
    /build https://www.figma.com/file/YOUR_FILE_ID/...
    ```
 
-3. **Pick your framework when asked.** If this is the first time, Claude will detect there's no framework set up and ask which one you want — see the next section. Then it'll do everything from there: scaffold the project, build every section, QA it, make it responsive, audit SEO.
+3. **Pick your framework when asked.** Claude detects if no framework is set up and asks which one you want. Then it builds everything: scaffold, components, QA, responsive, SEO audit.
 
-When it's done, Claude will start a dev server so you can preview the site in your browser.
+When done, Claude starts a dev server so you can preview the site in your browser.
 
 ---
 
-## Which framework should I pick?
-
-When there's no framework yet, Claude will ask. Here's the short version:
+### Which framework should I pick?
 
 | Building... | Use | Why |
 |---|---|---|
-| **Marketing site, landing page, blog, portfolio, agency site** | **Astro** | Static by default → fast loads, great SEO, minimal JavaScript shipped to the browser. Image optimization, sitemap, and RSS are built in. Best-in-class for content-heavy and brochure-style sites. |
-| **Web app, dashboard, SaaS, anything with login/user accounts/dynamic data** | **Next.js** | Full React framework with Server Components, Server Actions, API routes, middleware, and edge runtime. Best when you need interactivity and a real backend. |
-| Something else (Vite/React, SvelteKit, Vue/Nuxt) | Pick what you know | Claude will scaffold it for you if you tell it which. |
-
-If you're not sure, default to **Astro** for any site that's mostly content/marketing, and **Next.js** for anything with login or live data.
+| Marketing site, landing page, blog, portfolio | **Astro** | Static-first, fast loads, great SEO, minimal JS |
+| Web app, dashboard, SaaS, login/accounts | **Next.js** | Full React + Server Components, API routes, edge runtime |
+| Something else | Vite/React, SvelteKit, Vue/Nuxt | Tell Claude which and it'll scaffold it |
 
 ---
 
-## The three commands
+### The build commands
 
 | Command | What it does |
 |---|---|
-| `/brief <figma-url>` | Reads the first page of your Figma file and extracts colors, fonts, spacing, frame width — saves it as `PROJECT_BRIEF.md`. Auto-runs as Phase 0 of `/build`. |
-| `/build <figma-url>` | The full pipeline: brief → analyze design → build components → QA → responsive → SEO audit → preview. This is the one you'll use most. |
-| `/qa [section-name]` | Re-runs the desktop QA pass on the current build. Optionally limit it to one section by name. Use after manual edits. |
+| `/build <figma-url>` | Full pipeline: brief → analyze → build → QA → responsive → SEO → preview |
+| `/brief <figma-url>` | Reads first Figma page, extracts tokens, saves `PROJECT_BRIEF.md` |
+| `/qa [section-name]` | Re-runs QA pass on the current build. Use after manual edits. |
 
 ---
 
-## How the pipeline works (under the hood)
+### How the pipeline works
 
-`/build` runs these phases in order. Claude reports progress as it goes — no need to babysit.
+`/build` runs these phases in order:
 
-1. **Setup** — detects your framework (or asks if none), scaffolds it, integrates `global.css`.
-2. **Phase 0 — Brief.** Reads the first Figma page, extracts brand colors, typography, spacing, frame width. Writes `PROJECT_BRIEF.md` and updates `global.css` design tokens.
-3. **Phase 1 — Analyze.** Walks every page in your Figma file, maps sections and components, downloads all images. Writes `SITE_MAP.md` and `IMAGE_MANIFEST.md`.
-4. **Phase 2 — Build.** Builds every component from the live Figma data — exact text, colors, spacing, layout. Responsive media queries baked in from the start.
-5. **Phase 3 — QA.** Compares each built section against the Figma screenshot, fixes discrepancies automatically.
-6. **Phase 4 — Responsive.** Adapts every component for tablet (≤991px) and mobile (≤767px and ≤479px).
-7. **Phase 5 — SEO & accessibility.** Audits HTML semantics, meta tags, heading hierarchy, alt text, color contrast, focus states.
-8. **Preview.** Starts the dev server so you can see your site.
-
----
-
-## SEO superpowers (bonus skills)
-
-This starter also includes the **SearchFit SEO toolkit** — 11 skills + 3 agents + 6 commands for SEO work. They auto-trigger from natural language, so just ask for what you need:
-
-- "Audit my site's SEO"
-- "Generate schema markup for this page"
-- "Cluster these keywords"
-- "Find broken links"
-- "Optimize this page for [keyword]"
-- "Plan a content strategy"
-- "Translate this page to Spanish"
-- "How does my brand show up in ChatGPT/Claude/Gemini?"
-- "Compare my site to competitors"
-
-Run them anytime, before or after building the site.
+1. **Setup** — detects framework (or asks), scaffolds it, integrates `global.css`
+2. **Phase 0 — Brief** — extracts colors, typography, spacing, frame width → `PROJECT_BRIEF.md`
+3. **Phase 1 — Analyze** — maps every section and component, downloads all images → `SITE_MAP.md`
+4. **Phase 2 — Build** — builds every component from live Figma data with responsive media queries
+5. **Phase 3 — QA** — compares each section against Figma screenshot, auto-fixes discrepancies
+6. **Phase 4 — Responsive** — adapts for tablet (≤991px) and mobile (≤767px, ≤479px)
+7. **Phase 5 — SEO & accessibility** — meta tags, heading hierarchy, alt text, color contrast
+8. **Preview** — starts dev server
 
 ---
 
-## Deploying your site
+### Deploying your site
 
-When you're ready to ship, **Vercel** works great for both Astro and Next.js — one command and you're live.
+**Vercel** (recommended):
+```
+npm i -g vercel
+vercel
+```
+Follow the prompts. Use `vercel --prod` for production.
 
-1. Install the Vercel CLI (one-time):
-   ```
-   npm i -g vercel
-   ```
-2. From your project root:
-   ```
-   vercel
-   ```
-3. Follow the prompts. Vercel auto-detects your framework, builds, and gives you a live preview URL. Hit `vercel --prod` when you're ready to push to production.
-
-**Alternative hosts** (all free for typical marketing sites):
-- **Netlify** — `npm i -g netlify-cli && netlify deploy`
-- **Cloudflare Pages** — connect your Git repo via the Cloudflare dashboard
-
-Custom domains, automatic SSL, and preview deployments per pull request come for free with any of these.
+**Alternatives** (all free for typical marketing sites):
+- Netlify — `npm i -g netlify-cli && netlify deploy`
+- Cloudflare Pages — connect your Git repo via the dashboard
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 **"Figma MCP not connected" / `get_metadata` fails.**
-Run `/mcp` in Claude Code. Confirm the Figma MCP shows as connected. If not, re-add it and reauthorize with your Figma account.
+Run `/mcp` in Claude Code. Confirm Figma MCP shows as connected. Re-add and reauthorize if not.
 
-**Image downloads come back tiny (<1KB) or as the wrong file type.**
-Figma sometimes returns SVG placeholders for what should be raster images. Claude will flag these in `IMAGE_MANIFEST.md` as `FAILED`. Open the affected layer in Figma, confirm it's exported correctly, and re-run `/build` (Claude will skip already-built sections).
+**Image downloads come back tiny or wrong file type.**
+Figma sometimes returns SVG placeholders for raster images. Claude flags these in `IMAGE_MANIFEST.md`. Re-export the layer in Figma and re-run `/build`.
 
-**The build doesn't compile after Claude finishes.**
-Run `/qa` to re-check and auto-correct. If errors persist, paste the error output back to Claude — it'll diagnose and fix.
+**Build doesn't compile after Claude finishes.**
+Run `/qa` to auto-correct. If errors persist, paste the error back to Claude.
 
-**Wrong framework chosen, want to start over.**
-Delete the scaffolded files (or start in a fresh folder) and re-run `/build`. Claude will detect no framework and ask again.
+**Wrong framework chosen.**
+Delete the scaffolded files (or start in a fresh folder) and re-run `/build`.
 
-**A section looks wrong after the build.**
-Run `/qa <section-name>` to re-QA just that section against Figma. Claude will compare and fix discrepancies.
+**A section looks wrong.**
+Run `/qa <section-name>` to re-QA just that section against Figma.
+
+---
+
+## Part 2 — SEO & AEO
+
+Once the site is built (or if you already have a live site), run the SEO and AEO process:
+
+```
+/seo-aeo
+```
+
+Claude asks for your URL, then guides you through every phase — doing the audits, writing the content, generating schema, building your keyword strategy, and tracking progress. Come back anytime and run `/seo-aeo` again. It picks up exactly where you left off.
+
+---
+
+### New site or rebuild?
+
+Claude will ask this first. It matters:
+
+**New site** — Claude starts with a competitive audit and technical setup before any content goes live.
+
+**Rebuilding an existing site** — Claude runs a pre-migration snapshot first: crawls the live site, captures current rankings from Search Console, documents the full URL structure, and builds a 301 redirect map. This protects your existing rankings during the rebuild. Skipping this is the most common reason sites lose traffic after a relaunch.
+
+---
+
+### What happens at each phase
+
+| Phase | What Claude does |
+|-------|-----------------|
+| 00 — Foundation Audit | Audits the site, snapshots rankings, tests AI engine visibility |
+| 01 — Technical SEO | Fixes crawl issues, on-page elements, schema, Core Web Vitals |
+| 02 — Keyword Strategy | Keyword research, topic clustering, 12-month content calendar |
+| 03 — AEO Content | Answer-first rewrites, FAQ sections, content structured for AI citation |
+| 04 — Link Building | Quick wins, unlinked mentions, outreach templates, linkable asset planning |
+| 05 — Content Production | Pillar pages, cluster articles, glossary, FAQ hubs |
+| 06 — Brand & Entity | Entity footprint, Wikidata, press page, AI citation building |
+| 07 — Schema & AI Access | HowTo/ItemList schema, llms.txt, AI crawler access |
+| 08 — Link Building at Scale | Monthly outreach system, guest posts, partnerships |
+| 09 — UX & Conversion | CTR optimization, page experience, content performance |
+| 10 — Measurement | Full-year review, AEO progress, Year 2 planning |
+
+---
+
+### Other SEO commands
+
+| Command | What it does |
+|---------|-------------|
+| `/index-pages <url>` | Submit a URL to Google's Indexing API for fast indexing |
+| `/seo-check` | Quick SEO check on any page |
+| `/generate-schema` | Generate schema markup for any content type |
+| `/keyword-cluster` | Cluster a list of keywords into topic groups |
+| `/create-content` | Write an SEO + AEO optimized article |
+| `/create-topic` | Research and build a complete topic cluster |
+
+Or just ask Claude in plain English — most tasks trigger automatically.
 
 ---
 
@@ -141,15 +167,13 @@ Run `/qa <section-name>` to re-QA just that section against Figma. Claude will c
 ```
 .claude/
 ├── agents/        # Specialized AI workers (Figma analyzer, builder, QA, SEO auditor, ...)
-├── commands/      # Slash commands you invoke (/brief, /build, /qa, plus SEO commands)
-├── rules/         # The pipeline playbook — phase-by-phase build rules
-├── skills/        # SEO toolkit — 11 skills that auto-trigger from natural language
+├── commands/      # Slash commands (/brief, /build, /qa, /seo-aeo, /index-pages, ...)
+├── rules/         # Pipeline playbook — phase-by-phase build and SEO rules
+├── skills/        # SEO toolkit — skills that auto-trigger from natural language
 └── settings.json  # Permissions & MCP config
-CLAUDE.md          # Claude Code config reference (for advanced users)
-DESIGN-SYSTEM.md   # The fluid scaling system & design conventions
+CLAUDE.md          # Claude Code config reference
+DESIGN-SYSTEM.md   # Fluid scaling system & design conventions
 README.md          # This file
-global.css         # Design tokens + reset (relocated into your framework during setup)
-best-practice/     # Reference docs about Claude Code itself
+global.css         # Design tokens + reset (moved into your framework during setup)
+best-practice/     # Reference docs about Claude Code
 ```
-
-You don't need to touch any of these to use the pipeline — Claude reads them automatically.
