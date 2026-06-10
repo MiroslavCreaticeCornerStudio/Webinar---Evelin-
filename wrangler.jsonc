@@ -1,0 +1,10 @@
+{
+  // Cloudflare config for deploying the static Astro build as Worker static assets.
+  // NOTE: "name" must match the Worker name shown in your Cloudflare dashboard —
+  // change it here if your Worker is named differently.
+  "name": "webinar-evelin",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
