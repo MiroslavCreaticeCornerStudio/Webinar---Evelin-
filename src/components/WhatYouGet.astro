@@ -1,0 +1,136 @@
+---
+const columns = [
+  [
+    { icon: "benefits-icon-1.svg", text: "Възможност за дългосрочно развитие в сферата" },
+    { icon: "benefits-icon-2.svg", text: "Шанс да изградиш име още в началото на кариерата си" },
+    { icon: "benefits-icon-3.svg", text: "Реален старт в имотния бизнес" },
+  ],
+  [
+    { icon: "benefits-icon-4.svg", text: "Менторство директно от Ралица Ценова" },
+    { icon: "benefits-icon-5.svg", text: "Място в новия отбор на Home2U за „Борба до ключ“" },
+    { icon: "benefits-icon-6.svg", text: "Практическо обучение за брокер" },
+  ],
+];
+---
+
+<section class="benefits" id="kogo">
+  <div class="benefits__inner container container--padded">
+    <div class="benefits__heading">
+      <img src="/assets/images/benefits-line.svg" alt="" class="benefits__line" aria-hidden="true" />
+      <h2 class="benefits__title">Ако си сред избраните, получаваш:</h2>
+    </div>
+
+    <div class="benefits__grid">
+      {columns.map((col) => (
+        <div class="benefits__column">
+          {col.map((item) => (
+            <div class="benefits__card">
+              <span class="benefits__icon">
+                <img src={`/assets/images/${item.icon}`} alt="" width="32" height="32" loading="lazy" />
+              </span>
+              <p class="benefits__text">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    width: 100%;
+    background-color: var(--color-bg-white);
+    padding-block: 5em; /* 80px */
+  }
+  .benefits__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5em; /* 56px */
+  }
+
+  .benefits__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25em; /* 20px */
+    width: 38.75em; /* 620px */
+    max-width: 100%;
+  }
+  .benefits__line {
+    width: 2.5em; /* 40px */
+    height: 2px;
+  }
+  .benefits__title {
+    font-family: var(--font-heading);
+    font-size: 3em; /* 48px */
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    text-align: center;
+  }
+
+  .benefits__grid {
+    display: flex;
+    gap: 1em; /* 16px */
+    width: 100%;
+  }
+  .benefits__column {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* 16px */
+    flex: 1;
+    min-width: 0;
+  }
+
+  .benefits__card {
+    display: flex;
+    align-items: center;
+    gap: 1em; /* 16px */
+    padding: 1.5em; /* 24px */
+    border: 1px solid var(--color-bg-white);
+    border-radius: 1em; /* 16px */
+    background-image: linear-gradient(
+      -20deg,
+      rgba(231, 241, 248, 0.7) 0%,
+      rgba(248, 234, 237, 0.7) 100%
+    );
+    backdrop-filter: blur(4px);
+  }
+  .benefits__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0.625em; /* 10px */
+    background-color: var(--color-bg-white);
+    border-radius: 0.555em; /* 8.885px */
+  }
+  .benefits__icon img {
+    width: 2em; /* 32px */
+    height: 2em;
+  }
+  .benefits__text {
+    font-family: var(--font-heading);
+    font-size: 1.5em; /* 24px */
+    font-weight: 500;
+    line-height: 1.4;
+    color: #1f1b1b;
+  }
+
+  @media (max-width: 991px) {
+    .benefits__title {
+      font-size: 2.5em;
+    }
+    .benefits__text {
+      font-size: 1.25em;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .benefits__grid {
+      flex-direction: column;
+    }
+  }
+</style>

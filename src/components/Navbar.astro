@@ -1,0 +1,139 @@
+---
+const navLinks = [
+  { label: "Какво представлява", href: "#kakvo" },
+  { label: "Коя е Ралица", href: "#ralica" },
+  { label: "Кого търсим", href: "#kogo" },
+  { label: "„Борба до ключ”", href: "#borba" },
+];
+---
+
+<nav class="navbar" aria-label="Главна навигация">
+  <div class="navbar__inner container container--padded">
+    <a class="navbar__logo" href="#" aria-label="Home2U — начало">
+      <img src="/assets/images/logo-icon.svg" alt="" width="35" height="35" class="navbar__logo-icon" />
+      <img src="/assets/images/logo-text.svg" alt="Home2U" width="145" height="35" class="navbar__logo-text" />
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="navbar__toggle-input sr-only" />
+    <label for="nav-toggle" class="navbar__burger" aria-label="Отвори менюто">
+      <span></span><span></span><span></span>
+    </label>
+
+    <div class="navbar__menu">
+      <ul class="navbar__links">
+        {navLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+      <a href="#kandidatstvai" class="btn-outline navbar__cta">Кандидатствай сега</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 20;
+    padding-top: 1.25em; /* 20px */
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5em;
+    min-height: 3.125em; /* 50px */
+  }
+
+  .navbar__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625em; /* matches icon→text offset */
+    flex-shrink: 0;
+  }
+  .navbar__logo-icon {
+    width: 2.1875em; /* 35px */
+    height: 2.1875em;
+  }
+  .navbar__logo-text {
+    width: 9.13em; /* 145px (4.17:1) */
+    height: 2.1875em;
+  }
+
+  .navbar__menu {
+    display: flex;
+    align-items: center;
+    gap: 2.125em;
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 2.5em; /* 40px */
+  }
+  .navbar__links a {
+    font-family: var(--font-body);
+    font-size: 0.875em; /* 14px */
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-text-white);
+    white-space: nowrap;
+  }
+
+  .navbar__cta {
+    flex-shrink: 0;
+  }
+
+  /* Mobile menu controls — hidden on desktop */
+  .navbar__toggle-input { position: absolute; }
+  .navbar__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 2.75em;
+    height: 2.75em;
+    cursor: pointer;
+  }
+  .navbar__burger span {
+    display: block;
+    width: 1.5em;
+    height: 2px;
+    margin-inline: auto;
+    background: var(--color-text-white);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 991px) {
+    .navbar__burger {
+      display: flex;
+    }
+    .navbar__menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.5em;
+      padding: 1.5em var(--container-padding) 2em;
+      background: rgba(28, 28, 28, 0.97);
+      display: none;
+    }
+    .navbar__toggle-input:checked ~ .navbar__menu {
+      display: flex;
+    }
+    .navbar__links {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25em;
+    }
+    .navbar__links a {
+      font-size: 1.125em;
+    }
+    .navbar__cta {
+      align-self: flex-start;
+    }
+  }
+</style>

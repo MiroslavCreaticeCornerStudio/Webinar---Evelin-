@@ -1,0 +1,324 @@
+---
+---
+
+<section class="cta" id="kandidatstvai">
+  <div class="cta__bg" aria-hidden="true"></div>
+
+  <div class="cta__inner container container--padded">
+    <form class="cta__card" method="post" action="#" novalidate>
+      <div class="cta__timer" aria-label="Краен срок 5 юни">
+        <span class="cta__timer-badge">Краен срок</span>
+        <div class="cta__timer-card">
+          <span class="cta__timer-num">5</span>
+          <span class="cta__timer-month">юни</span>
+        </div>
+      </div>
+
+      <h2 class="cta__header">
+        <span class="cta__header-script">новото лице</span>
+        <span class="cta__header-text">Стани</span>
+        <span class="cta__header-text">в отбора на Home2U</span>
+      </h2>
+
+      <div class="cta__form">
+        <div class="cta__fields">
+          <div class="cta__field">
+            <label class="cta__label" for="cta-name">Име<span>*</span></label>
+            <input class="cta__input" id="cta-name" name="name" type="text" placeholder="Име" required />
+          </div>
+          <div class="cta__field">
+            <label class="cta__label" for="cta-phone">Телефон*</label>
+            <input class="cta__input" id="cta-phone" name="phone" type="tel" placeholder="Телефон" required />
+          </div>
+          <div class="cta__field">
+            <label class="cta__label" for="cta-email">Имейл*</label>
+            <input class="cta__input" id="cta-email" name="email" type="email" placeholder="Имейл" required />
+          </div>
+
+          <div class="cta__attachments">
+            <div class="cta__attach">
+              <span class="cta__label">CV*</span>
+              <label class="cta__attach-btn">
+                Прикачи файл
+                <input type="file" name="cv" accept=".pdf,.doc,.docx" required />
+              </label>
+            </div>
+            <div class="cta__attach">
+              <span class="cta__label">Мотивационно писмо*</span>
+              <label class="cta__attach-btn">
+                Прикачи файл
+                <input type="file" name="cover-letter" accept=".pdf,.doc,.docx" required />
+              </label>
+            </div>
+            <div class="cta__attach">
+              <span class="cta__label">Видео*</span>
+              <label class="cta__attach-btn">
+                Прикачи видео
+                <input type="file" name="video" accept="video/*" required />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta__consent">
+          <label class="cta__checkbox">
+            <input type="checkbox" name="consent" required />
+            <span class="cta__checkbox-box" aria-hidden="true"></span>
+            <span class="cta__checkbox-text">Давам съгласието си съобразно новите правила за <a href="#">защита на личните данни</a></span>
+          </label>
+          <button type="submit" class="btn-primary cta__submit">Кандидатствай сега</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--color-bg-white);
+    padding-block: 4.6875em; /* 75px */
+  }
+  .cta__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/images/cta-background.png");
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .cta__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta__card {
+    position: relative;
+    width: 39.375em; /* 630px */
+    max-width: 100%;
+    padding: 2.25em 3.75em 3em; /* 36px 60px 48px */
+    border: 1px solid #ffffff;
+    border-radius: 1.875em; /* 30px */
+    background-image: linear-gradient(
+      -90deg,
+      rgba(255, 255, 255, 0.42) 1.76%,
+      rgba(255, 255, 255, 0.7) 98.47%
+    );
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.625em; /* 10px */
+  }
+
+  /* Countdown timer */
+  .cta__timer {
+    position: absolute;
+    top: -2.5em;
+    right: -3.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 7.875em; /* 126px */
+    z-index: 5;
+  }
+  .cta__timer-badge {
+    position: relative;
+    z-index: 2;
+    padding: 0.35em 0.7em;
+    border-radius: 1.04em; /* 16.6px */
+    background-color: var(--color-accent);
+    color: var(--color-text-white);
+    font-family: var(--font-heading);
+    font-size: 0.875em; /* 14px */
+    line-height: 1;
+    box-shadow: 0px 3.697px 7.58px 0px rgba(0, 0, 0, 0.15);
+  }
+  .cta__timer-card {
+    margin-top: -0.75em;
+    width: 100%;
+    padding: 0.75em 0 0.4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.73em; /* 27.7px */
+    background-image: linear-gradient(
+      -90deg,
+      rgb(165, 196, 214) 16.8%,
+      rgb(252, 235, 236) 40.8%
+    );
+    box-shadow: 0px 0px 9.244px 3.697px rgba(169, 8, 49, 0.2);
+  }
+  .cta__timer-num {
+    font-family: var(--font-heading);
+    font-size: 4.625em; /* 74px */
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+  .cta__timer-month {
+    font-family: var(--font-heading);
+    font-size: 1.3em; /* 20.9px */
+    font-weight: 500;
+    line-height: 1;
+    color: #000000;
+  }
+
+  /* Header */
+  .cta__header {
+    position: relative;
+    padding-top: 0.4em;
+    font-size: 1em; /* neutralize default h2 sizing */
+    font-weight: 400;
+  }
+  .cta__header-text {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.625em; /* 42px */
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+  }
+  .cta__header-script {
+    position: absolute;
+    top: -0.1em;
+    left: 1.9em;
+    font-family: var(--font-script);
+    font-size: 4.75em; /* 76px */
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+
+  /* Form */
+  .cta__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25em; /* 36px */
+  }
+  .cta__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em; /* 20px */
+  }
+  .cta__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em; /* 12px */
+  }
+  .cta__label {
+    padding-left: 1em; /* 16px */
+    font-family: var(--font-heading);
+    font-size: 0.875em; /* 14px */
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  .cta__input {
+    width: 100%;
+    padding: 0.875em 1em; /* 14px 16px */
+    border: none;
+    border-radius: 1.5em; /* 24px */
+    background-color: var(--color-bg-white);
+    font-family: var(--font-body);
+    font-size: 1em; /* 16px */
+    color: var(--color-text-primary);
+  }
+  .cta__input::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  .cta__attachments {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em; /* 20px */
+  }
+  .cta__attach {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    align-items: flex-start;
+  }
+  .cta__attach-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375em 0.75em; /* 6px 12px */
+    border-radius: 1.75em; /* 28px */
+    background-color: var(--color-accent);
+    color: var(--color-text-white);
+    font-family: var(--font-body);
+    font-size: 0.875em; /* 14px */
+    line-height: 1;
+    cursor: pointer;
+  }
+  .cta__attach-btn input[type="file"] {
+    display: none;
+  }
+
+  .cta__consent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625em; /* 25px */
+  }
+  .cta__checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75em; /* 12px */
+    cursor: pointer;
+  }
+  .cta__checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 1em;
+    height: 1em;
+  }
+  .cta__checkbox-box {
+    flex-shrink: 0;
+    margin-top: 0.25em;
+    width: 1em; /* 16px */
+    height: 1em;
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-accent);
+    border-radius: 3px;
+    box-shadow: 0px 3px 13.5px 0px rgba(0, 0, 0, 0.05);
+  }
+  .cta__checkbox input:checked ~ .cta__checkbox-box {
+    background-color: var(--color-accent);
+  }
+  .cta__checkbox-text {
+    font-family: var(--font-body);
+    font-size: 0.875em; /* 14px */
+    font-weight: 400;
+    line-height: 1.5;
+    color: #484848;
+  }
+  .cta__checkbox-text a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  .cta__submit {
+    width: 100%;
+    padding-inline: 2.25em; /* 36px */
+    box-shadow: 0px 5px 15px rgba(169, 8, 49, 0.4);
+  }
+
+  @media (max-width: 991px) {
+    .cta__header-text {
+      font-size: 2.25em;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .cta__card {
+      width: 100%;
+    }
+    .cta__timer {
+      right: 0;
+      top: -3em;
+    }
+    .cta__header-script {
+      left: 2.5em;
+    }
+  }
+</style>

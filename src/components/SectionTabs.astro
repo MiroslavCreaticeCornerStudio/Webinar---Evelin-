@@ -1,0 +1,136 @@
+---
+---
+
+<section class="tabs" id="kakvo">
+  <div class="tabs__inner">
+    <div class="tabs__col">
+      <p class="tabs__date">5 юни</p>
+      <p class="tabs__caption">Краен срок за кандидатсватне</p>
+    </div>
+
+    <span class="tabs__divider" aria-hidden="true">
+      <img src="/assets/images/tabs-divider.svg" alt="" />
+    </span>
+
+    <div class="tabs__col">
+      <span class="tabs__icon">
+        <img src="/assets/images/tabs-icon-briefcase.svg" alt="" width="44" height="44" />
+      </span>
+      <p class="tabs__caption">1 свободно място в отбора</p>
+    </div>
+
+    <span class="tabs__divider" aria-hidden="true">
+      <img src="/assets/images/tabs-divider.svg" alt="" />
+    </span>
+
+    <div class="tabs__col">
+      <span class="tabs__icon tabs__icon--filled">
+        <img src="/assets/images/tabs-icon-user.svg" alt="" width="44" height="44" />
+      </span>
+      <p class="tabs__caption">Не е нужен опит</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tabs {
+    width: 100%;
+    background-color: var(--color-bg-white);
+  }
+  .tabs__inner {
+    max-width: var(--size-container);
+    margin-inline: auto;
+    padding: 2.5em 12.5em; /* 40px 200px */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5em;
+  }
+
+  .tabs__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    width: 16.5em; /* 264px */
+  }
+
+  .tabs__date {
+    font-family: var(--font-heading);
+    font-size: 1.75em; /* 28px */
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-accent);
+    text-align: center;
+  }
+  .tabs__caption {
+    font-family: var(--font-heading);
+    font-size: 1.375em; /* 22px */
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    text-align: center;
+  }
+  .tabs__col:first-child .tabs__caption {
+    font-size: 1.5em; /* 24px */
+    color: #1f1b1b;
+  }
+
+  .tabs__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    border-radius: 0.6875em;
+  }
+  .tabs__icon--filled {
+    background-color: var(--color-bg-white);
+  }
+  .tabs__icon img {
+    width: 2.75em; /* 44px */
+    height: 2.75em;
+  }
+
+  .tabs__divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6.75em; /* 108px */
+    flex-shrink: 0;
+  }
+  .tabs__divider img {
+    width: 6.75em; /* 108px line length */
+    height: 1px;
+    transform: rotate(90deg);
+  }
+
+  @media (max-width: 991px) {
+    .tabs__inner {
+      padding-inline: 2.5em;
+      gap: 1em;
+    }
+    .tabs__col {
+      width: auto;
+      flex: 1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .tabs__inner {
+      flex-direction: column;
+      gap: 2em;
+      padding: 2.5em var(--container-padding);
+    }
+    .tabs__col {
+      width: 100%;
+    }
+    .tabs__divider {
+      height: auto;
+      width: 100%;
+    }
+    .tabs__divider img {
+      width: 6.75em;
+      transform: none;
+    }
+  }
+</style>

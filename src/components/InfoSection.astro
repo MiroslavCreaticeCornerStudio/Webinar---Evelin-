@@ -1,0 +1,187 @@
+---
+---
+
+<section class="info" id="ralica">
+  <img src="/assets/images/info-ellipses.svg" alt="" class="info__deco" aria-hidden="true" />
+
+  <div class="info__inner container container--padded">
+    <div class="info__grid">
+      <div class="info__image">
+        <img
+          src="/assets/images/info-document.png"
+          alt="Одобрен кандидат — Кастинг за брокери, предаване „Борба До Ключ”, сезон 2"
+          width="538"
+          height="619"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="info__text">
+        <div class="info__challenge">
+          <div class="info__heading">
+            <span class="info__script">Готов ли си</span>
+            <h2 class="info__title">да влезеш в голямото предизвикателство?</h2>
+          </div>
+          <img src="/assets/images/divider-line.svg" alt="" class="info__line" aria-hidden="true" />
+        </div>
+
+        <div class="info__paragraphs">
+          <p>Избраните кандидати ще получат златната възможност да навлязат в бизнеса, учейки се от най-добрите в бранша. След това започва истинското предизвикателство:</p>
+          <p class="info__accent">Работа на терен с реални клиенти, където всеки разговор, всяко решение и всеки резултат ще имат значение.</p>
+          <p>Кандидатът, който се отличи най-силно, ще застане до Ралица Ценова като част от отбора в сезон 2 на „Борба до ключ: Home2U срещу INclusive“, в национален ефир.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .info {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg-white);
+    overflow: hidden;
+    padding-block: 5em; /* 80px */
+  }
+
+  .info__deco {
+    position: absolute;
+    top: 0.9375em;
+    left: -6.8125em; /* -109px */
+    width: 67.6875em; /* 1083px */
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .info__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .info__grid {
+    display: flex;
+    align-items: center;
+    gap: 6.1875em; /* 99px */
+  }
+
+  .info__image {
+    flex-shrink: 0;
+    width: 33.625em; /* 538px */
+    border-radius: 1em; /* 16px */
+    overflow: hidden;
+  }
+  .info__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .info__text {
+    display: flex;
+    flex-direction: column;
+    gap: 3.75em; /* 60px */
+    width: 35.75em; /* 572px */
+    max-width: 100%;
+  }
+
+  .info__challenge {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25em; /* 36px */
+    align-items: flex-start;
+  }
+  .info__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .info__script {
+    font-family: var(--font-script);
+    font-size: 5.875em; /* 94px */
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--color-accent);
+  }
+  .info__title {
+    font-family: var(--font-heading);
+    font-size: 3em; /* 48px */
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+  }
+  .info__line {
+    width: 2.5em; /* 40px */
+    height: 2px;
+  }
+
+  .info__paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* 16px */
+    padding-right: 4em; /* 64px */
+    font-size: 1em; /* 16px */
+    line-height: 1.45;
+  }
+  .info__paragraphs p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: #4f4f4f;
+  }
+  .info__accent {
+    color: var(--color-accent) !important;
+    font-weight: 500;
+  }
+
+  @media (max-width: 991px) {
+    .info__grid {
+      gap: 3em;
+    }
+    .info__title {
+      font-size: 2.5em;
+    }
+    .info__script {
+      font-size: 5em;
+    }
+    .info__paragraphs {
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .info__grid {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2.5em;
+    }
+    .info__image {
+      width: 100%;
+      max-width: 33.625em;
+      margin-inline: auto;
+    }
+    .info__text {
+      width: 100%;
+      gap: 2.5em;
+    }
+    .info__heading {
+      width: 100%;
+    }
+    .info__title {
+      font-size: 2.25em;
+      width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .info__script {
+      font-size: 4.25em;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .info__title {
+      font-size: 1.85em;
+    }
+    .info__script {
+      font-size: 3.5em;
+    }
+  }
+</style>

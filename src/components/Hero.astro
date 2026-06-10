@@ -1,0 +1,231 @@
+---
+import Navbar from "./Navbar.astro";
+---
+
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <Navbar />
+
+  <div class="hero__content container container--padded">
+    <div class="hero__heading">
+      <h1 class="hero__title">
+        <span class="hero__titleblock">
+          <span class="hero__script">Стани</span>
+          <span class="hero__word">ЗВЕЗДА</span>
+        </span>
+        <span class="hero__subtitle">
+          <span>в</span>
+          <span class="hero__accent"> „Борба До Ключ" 2</span>
+        </span>
+      </h1>
+      <div class="hero__by">
+        <img src="/assets/images/hero-line.svg" alt="" class="hero__by-line" />
+        <span class="hero__by-text">по</span>
+        <img src="/assets/images/hero-logo-by.png" alt="NOVA" class="hero__by-logo" width="139" height="36" />
+        <img src="/assets/images/hero-line.svg" alt="" class="hero__by-line" />
+      </div>
+    </div>
+
+    <div class="hero__cta-group">
+      <p class="hero__desc">Впусни се в предизвикателството ни, докажи се като най-добрия брокер и спечели своето място като екранен партньор на Ралица в сезон 2 на „Борба до ключ"!</p>
+      <a href="#kandidatstvai" class="btn-primary hero__btn">Кандидатствай</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 49.8125em; /* 797px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #1e1e1e;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/images/hero-background.png");
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 4%,
+      rgba(102, 102, 102, 0) 20%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.25em; /* 36px */
+    text-align: center;
+    padding-top: 6em; /* clears navbar */
+    padding-bottom: 2em;
+  }
+
+  .hero__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1em; /* neutralize default h1 sizing so child em values are correct */
+    font-weight: 400;
+  }
+
+  .hero__titleblock {
+    position: relative;
+    display: inline-block;
+    margin-top: 2.5em;
+  }
+  .hero__word {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 7.388em; /* 118.211px */
+    font-weight: 500;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--color-text-white);
+  }
+  .hero__script {
+    position: absolute;
+    top: -0.62em;
+    left: -0.15em;
+    font-family: var(--font-script);
+    font-size: 6.5125em; /* 104.196px */
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+
+  .hero__subtitle {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.7728em; /* 44.365px */
+    font-weight: 400;
+    line-height: 1.03;
+    color: var(--color-text-white);
+    margin-top: 0.1em;
+  }
+  .hero__accent {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .hero__by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9375em; /* 15px */
+    margin-top: 1.25em;
+  }
+  .hero__by-line {
+    width: 6.53em; /* 104.5px */
+    height: 2px;
+    flex-shrink: 0;
+  }
+  .hero__by-text {
+    font-family: var(--font-heading);
+    font-size: 2.1407em; /* 34.251px */
+    font-weight: 400;
+    line-height: 1.03;
+    color: var(--color-text-white);
+  }
+  .hero__by-logo {
+    width: auto;
+    height: 2.25em; /* 36px */
+  }
+
+  .hero__cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.25em; /* 36px */
+    max-width: 32.0625em; /* 513px */
+    width: 100%;
+  }
+  .hero__desc {
+    font-family: var(--font-body);
+    font-size: 1em; /* 16px */
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-white);
+    text-align: center;
+  }
+  .hero__btn {
+    padding-inline: 3.5em; /* 56px */
+  }
+
+  @media (max-width: 991px) {
+    .hero {
+      min-height: 40em;
+    }
+    .hero__word {
+      font-size: 6em;
+    }
+    .hero__script {
+      font-size: 5.2em;
+    }
+    .hero__subtitle {
+      font-size: 2.25em;
+    }
+    .hero__by-text {
+      font-size: 1.75em;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero {
+      min-height: auto;
+    }
+    .hero__content {
+      padding-top: 7em;
+      padding-bottom: 3.5em;
+    }
+    .hero__word {
+      font-size: 4.5em;
+    }
+    .hero__script {
+      font-size: 3.9em;
+    }
+    .hero__subtitle {
+      font-size: 1.75em;
+    }
+    .hero__by-line {
+      width: 4em;
+    }
+    .hero__by-text {
+      font-size: 1.5em;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .hero__word {
+      font-size: 3.4em;
+    }
+    .hero__script {
+      font-size: 2.9em;
+    }
+    .hero__subtitle {
+      font-size: 1.35em;
+    }
+  }
+</style>

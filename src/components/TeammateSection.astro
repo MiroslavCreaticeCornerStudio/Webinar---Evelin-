@@ -1,0 +1,202 @@
+---
+---
+
+<section class="teammate" id="borba">
+  <img src="/assets/images/teammate-bg.png" alt="" class="teammate__bg" aria-hidden="true" />
+  <img src="/assets/images/teammate-ellipse.svg" alt="" class="teammate__glow" aria-hidden="true" />
+
+  <div class="teammate__inner container container--padded">
+    <div class="teammate__head">
+      <div class="teammate__heading">
+        <img src="/assets/images/teammate-line.svg" alt="" class="teammate__line" aria-hidden="true" />
+        <h2 class="teammate__title">
+          Запознай се с Ралица <span class="teammate__accent">капитанът на отбор</span>
+          <span class="teammate__logo" aria-label="Home2U">
+            <img src="/assets/images/teammate-logo-icon.svg" alt="" />
+            <img src="/assets/images/teammate-logo-text.svg" alt="" />
+          </span>
+        </h2>
+      </div>
+
+      <div class="teammate__details">
+        <p>Ралица Ценова е изпълнителен директор на Home2U, брокер с над 12 години опит и човекът зад част от най-силните лични и екипни резултати в историята на компанията.</p>
+        <p>През годините тя е обучила стотици брокери и мениджъри, а сега ти имаш реален шанс да се учиш директно от нея.</p>
+      </div>
+    </div>
+
+    <div class="teammate__video">
+      <img src="/assets/images/teammate-video.jpg" alt="Ралица Ценова — капитан на отбора на Home2U" class="teammate__video-img" width="1004" height="565" loading="lazy" />
+      <img src="/assets/images/teammate-video-overlay.png" alt="" class="teammate__video-img" aria-hidden="true" loading="lazy" />
+      <button type="button" class="teammate__play" aria-label="Пусни видеото">
+        <img src="/assets/images/teammate-play.svg" alt="" width="62" height="62" />
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .teammate {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg-white);
+    overflow: hidden;
+    padding-block: 5em 6em;
+  }
+
+  .teammate__bg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    min-width: 75em;
+    height: 17em;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+  }
+  .teammate__glow {
+    position: absolute;
+    top: 22em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70em;
+    height: auto;
+    opacity: 0.8;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .teammate__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .teammate__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4em;
+  }
+
+  .teammate__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* 16px */
+    width: 33em; /* 528px */
+    flex-shrink: 0;
+  }
+  .teammate__line {
+    width: 2.5em;
+    height: 2px;
+  }
+  .teammate__title {
+    font-family: var(--font-heading);
+    font-size: 3em; /* 48px */
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+  }
+  .teammate__accent {
+    color: var(--color-accent);
+  }
+  .teammate__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2em;
+    vertical-align: middle;
+  }
+  .teammate__logo img:first-child {
+    width: 0.73em; /* ~35px square icon */
+    height: 0.73em;
+  }
+  .teammate__logo img:last-child {
+    width: 3.047em; /* wordmark 4.17:1 */
+    height: 0.73em;
+  }
+
+  .teammate__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* 16px */
+    width: 37em; /* 592px */
+    max-width: 100%;
+  }
+  .teammate__details p {
+    font-family: var(--font-body);
+    font-size: 1.125em; /* 18px */
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4f4f4f;
+  }
+
+  .teammate__video {
+    position: relative;
+    margin-top: 4.6875em; /* 75px */
+    width: 62.75em; /* 1004px */
+    max-width: 100%;
+    margin-inline: auto;
+    aspect-ratio: 1004 / 565;
+    border: 7px solid #000000;
+    border-radius: 0.26em; /* 4.183px */
+    overflow: hidden;
+  }
+  .teammate__video-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .teammate__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3.875em; /* 62px */
+    height: 3.875em;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .teammate__play img {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 991px) {
+    .teammate__head {
+      gap: 2.5em;
+    }
+    .teammate__title {
+      font-size: 2.5em;
+    }
+    .teammate__heading {
+      width: 26em;
+    }
+    .teammate__details p {
+      font-size: 1em;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .teammate__head {
+      flex-direction: column;
+      gap: 2em;
+    }
+    .teammate__heading,
+    .teammate__details {
+      width: 100%;
+    }
+    .teammate__title {
+      font-size: 2.25em;
+    }
+    .teammate__bg {
+      height: 10em;
+    }
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionTabs from "../components/SectionTabs.astro";
+import InfoSection from "../components/InfoSection.astro";
+import WhatYouGet from "../components/WhatYouGet.astro";
+import TeammateSection from "../components/TeammateSection.astro";
+import WhatWeLookFor from "../components/WhatWeLookFor.astro";
+import CtaSection from "../components/CtaSection.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="Стани звезда в „Борба до ключ“ 2 — Home2U"
+  description="Кандидатствай за кастинга на Home2U и стани екранен партньор на Ралица Ценова в сезон 2 на „Борба до ключ“ по NOVA. Реален старт в имотния бизнес — не е нужен опит."
+>
+  <Hero />
+  <main id="main" tabindex="-1">
+    <SectionTabs />
+    <InfoSection />
+    <WhatYouGet />
+    <TeammateSection />
+    <WhatWeLookFor />
+    <CtaSection />
+  </main>
+  <Footer />
+</BaseLayout>
