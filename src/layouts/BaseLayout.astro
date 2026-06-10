@@ -10,7 +10,7 @@ export interface Props {
 const {
   title = "Home2U",
   description = "",
-  ogImage = "/assets/images/hero-background.png",
+  ogImage = "/assets/images/og-image.jpg",
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;

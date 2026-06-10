@@ -2,6 +2,8 @@
 
 All assets downloaded from Figma (`zC2fj9ygaCKgnemwpd4Bln`) to `public/assets/images/`. Served at `/assets/images/<file>`. **39 of 39 downloaded OK · 0 failed.** Content-type verified per file.
 
+> **Optimization pass**: the heavy raster backgrounds/photos were resized to their real display sizes and converted to **WebP** (hero/cta/teammate/lookfor/info/footer-deco), cutting the image payload from **~22.7 MB → ~0.3 MB** with no visible quality loss. A 1200×630 `og-image.jpg` (61 KB) was generated for social sharing. The original heavy `.png`/`.jpg` source files were removed; the table below documents the original Figma exports.
+
 ## ⚠️ Notes / flags
 
 - **`info-image.png` exported BLANK from Figma** (4KB, near-empty transparent raster — the real "stack of documents" photo did not render). **Fallback used**: I re-rendered the composite node `2454:8708` via `get_screenshot` → **`info-document.png`** (530KB), which the Info section uses. It includes the papers + red "?" card + "Одобрен кандидат" label baked in. **Action for you**: if you have the real layered photo, drop it in and swap the `<img src>` in `src/components/InfoSection.astro`.
