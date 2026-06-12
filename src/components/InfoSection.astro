@@ -2,18 +2,19 @@
 ---
 
 <section class="info" id="ralica">
-  <img src="/assets/images/info-ellipses.svg" alt="" class="info__deco" aria-hidden="true" />
-
   <div class="info__inner container container--padded">
     <div class="info__grid">
-      <div class="info__image">
-        <img
-          src="/assets/images/info-document.webp"
-          alt="Одобрен кандидат — Кастинг за брокери, предаване „Борба До Ключ”, сезон 2"
-          width="538"
-          height="619"
-          loading="lazy"
-        />
+      <div class="info__media">
+        <img src="/assets/images/info-ellipses.svg" alt="" class="info__deco" aria-hidden="true" />
+        <div class="info__image">
+          <img
+            src="/assets/images/info-document.webp"
+            alt="Одобрен кандидат — Кастинг за брокери, предаване „Борба До Ключ”, сезон 2"
+            width="538"
+            height="619"
+            loading="lazy"
+          />
+        </div>
       </div>
 
       <div class="info__text">
@@ -44,11 +45,16 @@
     padding-block: 5em; /* 80px */
   }
 
+  .info__media {
+    position: relative;
+    flex-shrink: 0;
+  }
+
   .info__deco {
     position: absolute;
-    top: 0.9375em;
-    left: -6.8125em; /* -109px */
-    width: 67.6875em; /* 1083px */
+    top: -3em;
+    left: -7em;
+    width: 47em;
     height: auto;
     z-index: 0;
     pointer-events: none;
@@ -66,7 +72,8 @@
   }
 
   .info__image {
-    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
     width: 33.625em; /* 538px */
     border-radius: 1em; /* 16px */
     overflow: hidden;

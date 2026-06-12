@@ -173,11 +173,17 @@ const criteria = [
     display: inline-flex;
     align-items: center;
     gap: 0.75em; /* 12px */
+    align-self: flex-start;
+    padding: 0.65em 1.4em;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 2em;
+    background: transparent;
     font-family: var(--font-heading);
     font-size: 1.125em; /* 18px */
     font-weight: 500;
     line-height: 1.4;
     color: var(--color-text-white);
+    cursor: pointer;
     position: relative;
     z-index: 1;
   }
@@ -187,7 +193,7 @@ const criteria = [
   }
   .lookfor__cta-mark {
     position: absolute;
-    top: -0.45em;
+    top: -55%;
     right: 0.4em;
     font-family: var(--font-heading);
     font-weight: 800;

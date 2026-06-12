@@ -1,9 +1,10 @@
 ---
+// TODO: replace with the real promo video — placeholder for now
+const youtubeId = "aqz-KE-bpKQ";
 ---
 
 <section class="teammate" id="borba">
   <img src="/assets/images/teammate-bg.webp" alt="" class="teammate__bg" aria-hidden="true" />
-  <img src="/assets/images/teammate-ellipse.svg" alt="" class="teammate__glow" aria-hidden="true" />
 
   <div class="teammate__inner container container--padded">
     <div class="teammate__head">
@@ -24,15 +25,38 @@
       </div>
     </div>
 
-    <div class="teammate__video">
-      <img src="/assets/images/teammate-video.webp" alt="Ралица Ценова — капитан на отбора на Home2U" class="teammate__video-img" width="1004" height="565" loading="lazy" />
-      <img src="/assets/images/teammate-video-overlay.webp" alt="" class="teammate__video-img" aria-hidden="true" loading="lazy" />
-      <button type="button" class="teammate__play" aria-label="Пусни видеото">
-        <img src="/assets/images/teammate-play.svg" alt="" width="62" height="62" />
-      </button>
+    <div class="teammate__video-wrap">
+      <img src="/assets/images/teammate-ellipse.svg" alt="" class="teammate__glow" aria-hidden="true" />
+      <div class="teammate__video" data-youtube={youtubeId}>
+        <img src="/assets/images/teammate-video.webp" alt="Ралица Ценова — капитан на отбора на Home2U" class="teammate__video-img" width="1004" height="565" loading="lazy" />
+        <img src="/assets/images/teammate-video-overlay.webp" alt="" class="teammate__video-img" aria-hidden="true" loading="lazy" />
+        <button type="button" class="teammate__play" aria-label="Пусни видеото">
+          <img src="/assets/images/teammate-play.svg" alt="" width="62" height="62" />
+        </button>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll(".teammate__video[data-youtube]").forEach((el) => {
+    const play = () => {
+      if (el.dataset.loaded) return;
+      el.dataset.loaded = "1";
+      const id = el.getAttribute("data-youtube");
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = "Видео";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.className = "teammate__iframe";
+      el.innerHTML = "";
+      el.appendChild(iframe);
+    };
+    el.addEventListener("click", play);
+  });
+</script>
 
 <style>
   .teammate {
@@ -55,12 +79,17 @@
     object-position: center top;
     z-index: 0;
   }
+  .teammate__video-wrap {
+    position: relative;
+    margin-top: 4.6875em; /* 75px */
+  }
   .teammate__glow {
     position: absolute;
-    top: 22em;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 70em;
+    transform: translate(-50%, -50%);
+    width: 75em;
+    max-width: 125%;
     height: auto;
     opacity: 0.8;
     z-index: 0;
@@ -134,21 +163,24 @@
 
   .teammate__video {
     position: relative;
-    margin-top: 4.6875em; /* 75px */
+    z-index: 1;
     width: 62.75em; /* 1004px */
     max-width: 100%;
     margin-inline: auto;
-    aspect-ratio: 1004 / 565;
+    aspect-ratio: 1004 / 565; /* keeps the box size when the iframe replaces the thumbnail */
     border: 7px solid #000000;
     border-radius: 0.26em; /* 4.183px */
     overflow: hidden;
+    cursor: pointer;
   }
-  .teammate__video-img {
+  .teammate__video-img,
+  .teammate__iframe {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border: 0;
   }
   .teammate__play {
     position: absolute;
