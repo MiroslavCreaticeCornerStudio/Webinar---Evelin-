@@ -7,7 +7,7 @@ All assets downloaded from Figma (`zC2fj9ygaCKgnemwpd4Bln`) to `public/assets/im
 ## ⚠️ Notes / flags
 
 - **`info-image.png` exported BLANK from Figma** (4KB, near-empty transparent raster — the real "stack of documents" photo did not render). **Fallback used**: I re-rendered the composite node `2454:8708` via `get_screenshot` → **`info-document.png`** (530KB), which the Info section uses. It includes the papers + red "?" card + "Одобрен кандидат" label baked in. **Action for you**: if you have the real layered photo, drop it in and swap the `<img src>` in `src/components/InfoSection.astro`.
-- **`hero-logo-by.png`** (1.2KB) is the white **NOVA** wordmark for the dark hero (transparent PNG) — not a failure.
+- **`hero-logo-by.png`** — the Figma export was **fully transparent/blank** (the "по NOVA" channel logo never rendered, same failure class as `info-image`). **Fixed**: re-rendered the NOVA logo node from Figma and converted it to white-on-transparent so it shows on the dark hero.
 - **Large background photos** (`cta-background.png` 8.4MB, `hero-background.png` 6.5MB, `teammate-video-overlay.png` 4.3MB) are full-resolution Figma exports. They work as-is but are heavy — recommend optimizing/compressing before production (see post-build note).
 
 ## Hero (`2454:8638`)
