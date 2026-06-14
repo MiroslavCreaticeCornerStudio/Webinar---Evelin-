@@ -11,16 +11,16 @@ import Navbar from "./Navbar.astro";
   <div class="hero__content container container--padded">
     <div class="hero__heading">
       <h1 class="hero__title">
-        <span class="hero__titleblock">
+        <span class="hero__titleblock" data-hero>
           <span class="hero__script">Стани</span>
           <span class="hero__word">ЗВЕЗДА</span>
         </span>
-        <span class="hero__subtitle">
+        <span class="hero__subtitle" data-hero>
           <span>в</span>
           <span class="hero__accent"> „Борба До Ключ" 2</span>
         </span>
       </h1>
-      <div class="hero__by">
+      <div class="hero__by" data-hero>
         <img src="/assets/images/hero-line.svg" alt="" class="hero__by-line" />
         <span class="hero__by-text">по</span>
         <img src="/assets/images/hero-logo-by.png" alt="NOVA" class="hero__by-logo" width="139" height="36" />
@@ -29,8 +29,8 @@ import Navbar from "./Navbar.astro";
     </div>
 
     <div class="hero__cta-group">
-      <p class="hero__desc">Впусни се в предизвикателството ни, докажи се като най-добрия брокер и спечели своето място като екранен партньор на Ралица в сезон 2 на „Борба до ключ"!</p>
-      <a href="#kandidatstvai" class="btn-primary hero__btn">Кандидатствай</a>
+      <p class="hero__desc" data-hero>Впусни се в предизвикателството ни, докажи се като най-добрия брокер и спечели своето място като екранен партньор на Ралица в сезон 2 на „Борба до ключ"!</p>
+      <a href="#kandidatstvai" class="btn-primary hero__btn" data-hero>Кандидатствай</a>
     </div>
   </div>
 </section>
@@ -159,7 +159,7 @@ import Navbar from "./Navbar.astro";
     flex-direction: column;
     align-items: center;
     gap: 2.25em; /* 36px */
-    max-width: 38em; /* widened so the description fits in 3 lines */
+    max-width: 34em;
     width: 100%;
   }
   .hero__desc {
@@ -196,7 +196,18 @@ import Navbar from "./Navbar.astro";
     .hero {
       min-height: auto;
     }
+    .hero__bg {
+      background-image: url("/assets/images/hero-background-mobile.webp");
+    }
+    .hero__overlay {
+      background: linear-gradient(
+        to bottom,
+        rgb(223 212 203 / 33%) 4% 4%,
+        rgb(237 227 217 / 0%) 70%
+      );
+    }
     .hero__content {
+      height: 75vh;
       padding-top: 7em;
       padding-bottom: 3.5em;
     }

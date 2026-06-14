@@ -6,7 +6,7 @@ const castingLinks = [
 ---
 
 <footer class="footer">
-  <div class="footer__top container container--padded">
+  <div class="footer__top container container--padded" data-reveal>
     <div class="footer__brand">
       <a class="footer__logo" href="#top" aria-label="Home2U — начало">
         <img src="/assets/images/footer-logo-icon.svg" alt="" class="footer__logo-icon" />
@@ -99,10 +99,10 @@ const castingLinks = [
   }
   .footer__signup {
     position: relative;
-    display: inline-flex;
+    display: flex;
     align-items: flex-start;
-    margin-top: 0.5em;
-    margin-left: 6em;
+    margin-top: 1.1em;
+    margin-left: 14.6em;
   }
   .footer__signup-script {
     font-family: var(--font-script);
@@ -115,6 +115,7 @@ const castingLinks = [
     width: 3em;
     height: 4.84em; /* 0.62:1 arrow */
     margin-left: 0.2em;
+    margin-top: -4em;
   }
   .footer__deco {
     display: inline-flex;
@@ -140,7 +141,7 @@ const castingLinks = [
   .footer__deco--clap {
     position: absolute;
     top: 0;
-    left: 25em;
+    left: 26.5em;
   }
 
   /* Columns */
@@ -213,6 +214,9 @@ const castingLinks = [
     top: -2em;
     right: 0;
   }
+  .footer__deco--mic img {
+    transform: scale(-1, 1);
+  }
 
   /* Bottom bar */
   .footer__bar {
@@ -254,8 +258,19 @@ const castingLinks = [
       flex-direction: column;
       gap: 3em;
     }
-    .footer__deco--clap {
+    /* Mobile footer: no "Запиши се СЕГА" script; clapperboard moves to the
+       top-right by the Кастинг heading (matching the mobile design). */
+    .footer__brand {
+      width: 100%;
+    }
+    .footer__signup {
       display: none;
+    }
+    .footer__deco--clap {
+      display: inline-flex;
+      top: 0.5em;
+      left: auto;
+      right: 0;
     }
     .footer__cols {
       flex-direction: column;
@@ -270,17 +285,36 @@ const castingLinks = [
       width: 100%;
     }
     .footer__links {
-      flex-wrap: wrap;
-      gap: 1.5em 3em;
+      flex-direction: column;
+      gap: 0.75em;
     }
     .footer__bar-inner {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 0.75em;
       padding-block: 1em;
     }
     .footer__legal {
       flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer__copy {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 767px) {
+    /* Smaller logo on phones (matches the mobile design) and leaves room for the clapperboard */
+    .footer__logo {
+      gap: 0.8em;
+    }
+    .footer__logo-icon {
+      width: 2.6em;
+      height: 2.6em;
+    }
+    .footer__logo-text {
+      width: 10.6em;
+      height: 2.55em;
     }
   }
 </style>

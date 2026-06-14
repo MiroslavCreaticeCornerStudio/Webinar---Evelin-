@@ -11,7 +11,7 @@ const criteria = [
 
 <section class="lookfor">
   <div class="lookfor__inner container container--padded">
-    <div class="lookfor__head">
+    <div class="lookfor__head" data-reveal>
       <div class="lookfor__head-top">
         <img src="/assets/images/lookfor-line.svg" alt="" class="lookfor__line" aria-hidden="true" />
         <h2 class="lookfor__title">Търсим човек с хъс, характер и присъствие</h2>
@@ -21,9 +21,9 @@ const criteria = [
 
     <div class="lookfor__body">
       <div class="lookfor__main">
-        <ul class="lookfor__cards">
+        <ul class="lookfor__cards" data-reveal-stagger>
           {criteria.map((text) => (
-            <li class="lookfor__card">
+            <li class="lookfor__card" data-reveal-item>
               <span class="lookfor__icon">
                 <img src="/assets/images/lookfor-icon-check.svg" alt="" width="18" height="18" loading="lazy" />
               </span>
@@ -32,7 +32,7 @@ const criteria = [
           ))}
         </ul>
 
-        <div class="lookfor__cta">
+        <div class="lookfor__cta" data-reveal>
           <p class="lookfor__cta-title">Имаш състезателен дух?</p>
           <a href="#kandidatstvai" class="lookfor__cta-link">
             Запиши се сега
@@ -42,7 +42,7 @@ const criteria = [
         </div>
       </div>
 
-      <div class="lookfor__image">
+      <div class="lookfor__image" data-reveal>
         <img src="/assets/images/lookfor-image.webp" alt="Ралица Ценова в режисьорски стол" width="538" height="754" loading="lazy" />
       </div>
     </div>
@@ -240,6 +240,27 @@ const criteria = [
     .lookfor__image {
       width: 100%;
       min-height: 25em;
+      order: -1; /* photo above the cards, matching the mobile design */
+    }
+    .lookfor__head,
+    .lookfor__head-top {
+      align-items: flex-start;
+    }
+    .lookfor__title,
+    .lookfor__subtitle {
+      text-align: left;
+    }
+    .lookfor__cards {
+      grid-template-columns: 1fr;
+    }
+    .lookfor__cta {
+      justify-content: center;
+      align-items: center;
+      gap: 1.75em;
+      text-align: center;
+    }
+    .lookfor__cta-link {
+      align-self: center;
     }
   }
 

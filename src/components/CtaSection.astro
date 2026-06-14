@@ -5,7 +5,19 @@
   <div class="cta__bg" aria-hidden="true"></div>
 
   <div class="cta__inner container container--padded">
-    <form class="cta__card" method="post" action="#" novalidate>
+    <form class="cta__card" method="post" action="#" novalidate data-reveal>
+      {/* Hidden attribution fields — auto-filled from URL params / Meta cookies for offline conversion tracking */}
+      <input type="hidden" name="fbclid" />
+      <input type="hidden" name="fbc" />
+      <input type="hidden" name="fbp" />
+      <input type="hidden" name="utm_source" />
+      <input type="hidden" name="utm_medium" />
+      <input type="hidden" name="utm_campaign" />
+      <input type="hidden" name="utm_term" />
+      <input type="hidden" name="utm_content" />
+      <input type="hidden" name="landing_page" />
+      <input type="hidden" name="referrer" />
+
       <div class="cta__timer" aria-label="Краен срок 5 юни">
         <span class="cta__timer-badge">Краен срок</span>
         <div class="cta__timer-card">
@@ -15,8 +27,7 @@
       </div>
 
       <h2 class="cta__header">
-        <span class="cta__header-script">новото лице</span>
-        <span class="cta__header-text">Стани</span>
+        <span class="cta__header-text">Стани <span class="cta__header-script">новото лице</span></span>
         <span class="cta__header-text">в отбора на Home2U</span>
       </h2>
 
@@ -72,6 +83,69 @@
     </form>
   </div>
 </section>
+
+<script>
+  // Offline conversion tracking: capture the Facebook click id + UTM params on
+  // landing, persist them in localStorage, and inject them into the form's
+  // hidden fields so they travel with the lead to your CRM / Meta CAPI.
+  (() => {
+    const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+    const STORE_KEY = "h2u_attribution";
+
+    const getCookie = (name: string) => {
+      const m = document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)");
+      return m ? decodeURIComponent(m.pop() as string) : "";
+    };
+
+    // Load anything captured on a previous visit (persists across param-less reloads).
+    let store: Record<string, string> = {};
+    try {
+      store = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+    } catch {}
+
+    // Capture from the current URL — only overwrite when a value is actually present.
+    const params = new URLSearchParams(window.location.search);
+    UTM.forEach((k) => {
+      const v = params.get(k);
+      if (v) store[k] = v;
+    });
+
+    const fbclid = params.get("fbclid");
+    if (fbclid) {
+      store.fbclid = fbclid;
+      // Meta's expected fbc format: fb.1.<timestamp>.<fbclid>
+      store.fbc = `fb.1.${Date.now()}.${fbclid}`;
+    }
+
+    // Prefer the real Meta Pixel cookies when present (highest CAPI match quality).
+    const cookieFbc = getCookie("_fbc");
+    const cookieFbp = getCookie("_fbp");
+    if (cookieFbc) store.fbc = cookieFbc;
+    if (cookieFbp) store.fbp = cookieFbp;
+
+    // First-touch context.
+    if (!store.landing_page) store.landing_page = window.location.href;
+    if (!store.referrer) store.referrer = document.referrer || "";
+
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(store));
+    } catch {}
+
+    // Inject into the hidden fields of every form on the page (now + before submit).
+    const fill = () => {
+      document.querySelectorAll("form").forEach((form) => {
+        Object.entries(store).forEach(([k, v]) => {
+          const field = form.querySelector<HTMLInputElement>(`input[name="${k}"]`);
+          if (field) field.value = v || "";
+        });
+      });
+    };
+    fill();
+    document.querySelectorAll("form").forEach((form) =>
+      form.addEventListener("submit", fill, { capture: true })
+    );
+  })();
+</script>
 
 <style>
   .cta {
@@ -167,7 +241,6 @@
 
   /* Header */
   .cta__header {
-    position: relative;
     padding-top: 0.4em;
     font-size: 1em; /* neutralize default h2 sizing */
     font-weight: 400;
@@ -180,15 +253,14 @@
     line-height: 1.25;
     color: var(--color-text-primary);
   }
+  /* "новото лице" — red script flowing inline after "Стани" on the same line */
   .cta__header-script {
-    position: absolute;
-    top: -0.1em;
-    left: 1.9em;
     font-family: var(--font-script);
-    font-size: 4.75em; /* 76px */
+    font-size: 1.4em; /* ~1.4× the heading, baseline-aligned inline */
     font-weight: 700;
     line-height: 1;
     color: var(--color-accent);
+    white-space: nowrap;
   }
 
   /* Form */
@@ -312,13 +384,16 @@
   @media (max-width: 767px) {
     .cta__card {
       width: 100%;
+      padding-inline: 2.5em; /* less than the desktop 3.75em on a narrow card */
+    }
+    .cta__header-text {
+      font-size: 1.9em;
     }
     .cta__timer {
       right: 0;
-      top: -3em;
-    }
-    .cta__header-script {
-      left: 2.5em;
+      top: -2.5em;
+      transform: scale(0.7);
+      transform-origin: top right; /* smaller badge so it clears the title (matches mobile design) */
     }
   }
 </style>

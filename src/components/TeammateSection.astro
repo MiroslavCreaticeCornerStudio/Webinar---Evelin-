@@ -7,7 +7,7 @@ const youtubeId = "aqz-KE-bpKQ";
   <img src="/assets/images/teammate-bg.webp" alt="" class="teammate__bg" aria-hidden="true" />
 
   <div class="teammate__inner container container--padded">
-    <div class="teammate__head">
+    <div class="teammate__head" data-reveal>
       <div class="teammate__heading">
         <img src="/assets/images/teammate-line.svg" alt="" class="teammate__line" aria-hidden="true" />
         <h2 class="teammate__title">
@@ -25,7 +25,7 @@ const youtubeId = "aqz-KE-bpKQ";
       </div>
     </div>
 
-    <div class="teammate__video-wrap">
+    <div class="teammate__video-wrap" data-reveal>
       <img src="/assets/images/teammate-ellipse.svg" alt="" class="teammate__glow" aria-hidden="true" />
       <div class="teammate__video" data-youtube={youtubeId}>
         <img src="/assets/images/teammate-video.webp" alt="Ралица Ценова — капитан на отбора на Home2U" class="teammate__video-img" width="1004" height="565" loading="lazy" />
@@ -64,7 +64,7 @@ const youtubeId = "aqz-KE-bpKQ";
     width: 100%;
     background-color: var(--color-bg-white);
     overflow: hidden;
-    padding-block: 5em 6em;
+    padding-block: 5em 18em;
   }
 
   .teammate__bg {
@@ -91,6 +91,7 @@ const youtubeId = "aqz-KE-bpKQ";
     width: 75em;
     max-width: 125%;
     height: auto;
+    aspect-ratio: 1311.4 / 926.203; /* matches the SVG viewBox so the glow isn't squished */
     opacity: 0.8;
     z-index: 0;
     pointer-events: none;
@@ -173,13 +174,21 @@ const youtubeId = "aqz-KE-bpKQ";
     overflow: hidden;
     cursor: pointer;
   }
-  .teammate__video-img,
-  .teammate__iframe {
+  .teammate__video-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border: 0;
+  }
+  /* The iframe is created in JS at runtime, so it never gets Astro's scoped
+     data attribute — target it globally so it fills the player box. */
+  .teammate__video :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     border: 0;
   }
   .teammate__play {
@@ -216,6 +225,9 @@ const youtubeId = "aqz-KE-bpKQ";
   }
 
   @media (max-width: 767px) {
+    .teammate {
+      padding-block: 5em 13em;
+    }
     .teammate__head {
       flex-direction: column;
       gap: 2em;
@@ -229,6 +241,9 @@ const youtubeId = "aqz-KE-bpKQ";
     }
     .teammate__bg {
       height: 10em;
+      object-fit: contain;
+      width: 100%;
+      min-width: 100%;
     }
   }
 </style>

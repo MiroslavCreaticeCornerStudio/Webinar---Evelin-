@@ -4,8 +4,7 @@
 <section class="info" id="ralica">
   <div class="info__inner container container--padded">
     <div class="info__grid">
-      <div class="info__media">
-        <img src="/assets/images/info-ellipses.svg" alt="" class="info__deco" aria-hidden="true" />
+      <div class="info__media" data-reveal>
         <div class="info__image">
           <img
             src="/assets/images/info-document.webp"
@@ -17,7 +16,7 @@
         </div>
       </div>
 
-      <div class="info__text">
+      <div class="info__text" data-reveal>
         <div class="info__challenge">
           <div class="info__heading">
             <span class="info__script">Готов ли си</span>
@@ -50,12 +49,16 @@
     flex-shrink: 0;
   }
 
-  .info__deco {
+  /* Decorative ellipse glow behind the photo card */
+  .info__media::before {
+    content: "";
     position: absolute;
-    top: -3em;
-    left: -7em;
-    width: 47em;
-    height: auto;
+    left: -85%;
+    width: 100rem;
+    height: 40rem;
+    background-image: url("/assets/images/info-ellipses.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
     z-index: 0;
     pointer-events: none;
   }
@@ -112,7 +115,7 @@
   }
   .info__title {
     font-family: var(--font-heading);
-    font-size: 3em; /* 48px */
+    font-size: 2.625em; /* 42px */
     font-weight: 500;
     line-height: 1.2;
     color: var(--color-text-primary);
@@ -126,7 +129,6 @@
     display: flex;
     flex-direction: column;
     gap: 1em; /* 16px */
-    padding-right: 4em; /* 64px */
     font-size: 1em; /* 16px */
     line-height: 1.45;
   }
@@ -135,8 +137,7 @@
     font-weight: 400;
     color: #4f4f4f;
   }
-  .info__accent {
-    color: var(--color-accent) !important;
+  .info__paragraphs .info__accent {
     font-weight: 500;
   }
 
@@ -165,6 +166,12 @@
       width: 100%;
       max-width: 33.625em;
       margin-inline: auto;
+    }
+    .info__media::before {
+      left: 50%;
+      transform: translateX(-50%);
+      background-position: center;
+      top: -20%;
     }
     .info__text {
       width: 100%;

@@ -15,16 +15,16 @@ const columns = [
 
 <section class="benefits" id="kogo">
   <div class="benefits__inner container container--padded">
-    <div class="benefits__heading">
+    <div class="benefits__heading" data-reveal>
       <img src="/assets/images/benefits-line.svg" alt="" class="benefits__line" aria-hidden="true" />
       <h2 class="benefits__title">Ако си сред избраните, получаваш:</h2>
     </div>
 
-    <div class="benefits__grid">
+    <div class="benefits__grid" data-reveal-stagger>
       {columns.map((col) => (
         <div class="benefits__column">
           {col.map((item) => (
-            <div class="benefits__card">
+            <div class="benefits__card" data-reveal-item>
               <span class="benefits__icon">
                 <img src={`/assets/images/${item.icon}`} alt="" width="32" height="32" loading="lazy" />
               </span>
@@ -131,6 +131,16 @@ const columns = [
   @media (max-width: 767px) {
     .benefits__grid {
       flex-direction: column;
+    }
+    .benefits__heading {
+      align-items: flex-start;
+    }
+    .benefits__title {
+      text-align: left;
+    }
+    .benefits__card {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 </style>
