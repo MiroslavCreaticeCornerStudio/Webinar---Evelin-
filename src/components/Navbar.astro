@@ -1,15 +1,15 @@
 ---
 const navLinks = [
-  { label: "Какво представлява", href: "#kakvo" },
-  { label: "Коя е Ралица", href: "#ralica" },
-  { label: "Кого търсим", href: "#kogo" },
-  { label: "„Борба до ключ”", href: "#borba" },
+  { label: "Какво представлява", href: "/#kakvo" },
+  { label: "Коя е Ралица", href: "/#ralica" },
+  { label: "Кого търсим", href: "/#kogo" },
+  { label: "„Борба до ключ”", href: "/#borba" },
 ];
 ---
 
 <nav class="navbar" aria-label="Главна навигация">
   <div class="navbar__inner container container--padded">
-    <a class="navbar__logo" href="#" aria-label="Home2U — начало">
+    <a class="navbar__logo" href="/" aria-label="Home2U — начало">
       <img src="/assets/images/logo-icon.svg" alt="" width="35" height="35" class="navbar__logo-icon" />
       <img src="/assets/images/logo-text.svg" alt="Home2U" width="145" height="35" class="navbar__logo-text" />
     </a>
@@ -25,7 +25,7 @@ const navLinks = [
           <li><a href={link.href}>{link.label}</a></li>
         ))}
       </ul>
-      <a href="#kandidatstvai" class="btn-outline navbar__cta">Кандидатствай сега</a>
+      <a href="/#kandidatstvai" class="btn-outline navbar__cta">Кандидатствай сега</a>
     </div>
   </div>
 </nav>

@@ -5,7 +5,7 @@
   <div class="cta__bg" aria-hidden="true"></div>
 
   <div class="cta__inner container container--padded">
-    <form class="cta__card" method="post" action="#" novalidate data-reveal>
+    <form class="cta__card" method="post" action="/thank-you" data-reveal>
       {/* Hidden attribution fields — auto-filled from URL params / Meta cookies for offline conversion tracking */}
       <input type="hidden" name="fbclid" />
       <input type="hidden" name="fbc" />
@@ -144,6 +144,15 @@
     document.querySelectorAll("form").forEach((form) =>
       form.addEventListener("submit", fill, { capture: true })
     );
+
+    // Visual flow: once the required fields validate, send the applicant to the
+    // thank-you page. (Form data isn't sent to a backend yet — that comes with
+    // real submission; until then this just routes the user.)
+    const ctaForm = document.querySelector<HTMLFormElement>(".cta__card");
+    ctaForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      window.location.href = "/thank-you";
+    });
   })();
 </script>
 

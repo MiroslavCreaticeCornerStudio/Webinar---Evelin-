@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="Благодарим ти! — Home2U"
+  description="Получихме твоята кандидатура за кастинга на Home2U."
+  noindex={true}
+>
+  <main id="main" tabindex="-1">
+    <section class="thankyou">
+      <div class="thankyou__bg" aria-hidden="true"></div>
+      <div class="thankyou__overlay" aria-hidden="true"></div>
+
+      <Navbar />
+
+      <div class="thankyou__inner container container--padded">
+        <span class="thankyou__check" aria-hidden="true">
+          <img src="/assets/images/lookfor-icon-check.svg" alt="" width="40" height="40" />
+        </span>
+        <h1 class="thankyou__title">Благодарим ти!</h1>
+        <p class="thankyou__text">
+          Получихме твоята кандидатура за кастинга на Home2U. Ще прегледаме всичко
+          внимателно и съвсем скоро ще се свържем с избраните кандидати.
+        </p>
+        <a href="/" class="btn-primary thankyou__btn">Обратно към началото</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .thankyou {
+    position: relative;
+    width: 100%;
+    min-height: 44em; /* ~704px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    text-align: center;
+  }
+  .thankyou__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/images/cta-background.webp");
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .thankyou__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .thankyou__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em; /* 24px */
+    max-width: 40em; /* 640px */
+    padding-block: 8em 5em; /* top clears the absolute navbar */
+  }
+  .thankyou__check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5em; /* 80px */
+    height: 5em;
+  }
+  .thankyou__check img {
+    width: 100%;
+    height: 100%;
+  }
+  .thankyou__title {
+    font-family: var(--font-heading);
+    font-size: 3.5em; /* 56px */
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--color-text-white);
+  }
+  .thankyou__text {
+    font-family: var(--font-body);
+    font-size: 1.125em; /* 18px */
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-white);
+  }
+  .thankyou__btn {
+    margin-top: 0.5em;
+    padding-inline: 3em; /* 48px */
+  }
+
+  @media (max-width: 767px) {
+    .thankyou {
+      min-height: 40em;
+    }
+    .thankyou__inner {
+      padding-block: 7em 4em;
+    }
+    .thankyou__title {
+      font-size: 2.5em;
+    }
+  }
+</style>
