@@ -29,7 +29,10 @@ import Navbar from "./Navbar.astro";
     </div>
 
     <div class="hero__cta-group">
-      <p class="hero__desc" data-hero>Впусни се в предизвикателството ни, докажи се като най-добрия брокер и спечели своето място като екранен партньор на Ралица в сезон 2 на „Борба до ключ"!</p>
+      <p class="hero__desc" data-hero>
+        <span class="hero__desc-full">Впусни се в предизвикателството ни, докажи се като най-добрия брокер и спечели своето място като екранен партньор на Ралица в сезон 2 на „Борба до ключ"!</span>
+        <span class="hero__desc-short">Спечели своето място като екранен партньор на Ралица</span>
+      </p>
       <a href="#kandidatstvai" class="btn-primary hero__btn" data-hero>Кандидатствай</a>
     </div>
   </div>
@@ -39,7 +42,7 @@ import Navbar from "./Navbar.astro";
   .hero {
     position: relative;
     width: 100%;
-    min-height: 49.8125em; /* 797px */
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -170,13 +173,17 @@ import Navbar from "./Navbar.astro";
     color: var(--color-text-white);
     text-align: center;
   }
+  /* Shorter description on mobile, full copy on desktop */
+  .hero__desc-short {
+    display: none;
+  }
   .hero__btn {
     padding-inline: 3.5em; /* 56px */
   }
 
   @media (max-width: 991px) {
     .hero {
-      min-height: 40em;
+      min-height: 75vh;
     }
     .hero__word {
       font-size: 6em;
@@ -210,6 +217,12 @@ import Navbar from "./Navbar.astro";
       height: 75vh;
       padding-top: 7em;
       padding-bottom: 3.5em;
+    }
+    .hero__desc-full {
+      display: none;
+    }
+    .hero__desc-short {
+      display: inline;
     }
     .hero__word {
       font-size: 4.5em;
